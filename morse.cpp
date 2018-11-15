@@ -41,7 +41,7 @@ void read_morse_pairs_from_file(map <char, string> & conversion)
         conversion[key] = value;
     }
     in.close();
-    //manually add the space char. no way to read ' ' from file
+    //manually add the space and new line char. no way to read ' ' or '\n' from file
     conversion[' '] = "/";
     conversion['\n'] = ".-.-";
     cout << endl;
@@ -72,9 +72,6 @@ void convert_english_to_morse(string infile, string outfile, map<char,string> co
 
 void output_english_converted_to_morse(char to_convert, ofstream& out, map<char, string> conversion,ifstream & in)
 {
-//   if (to_convert == '\n')
-//        out << endl;
-//    else
     {
         for(auto p : conversion)
             if(to_convert == p.first)
@@ -111,11 +108,6 @@ void output_morse_converted_to_english(char temp, string & to_convert, map<char,
         to_convert = ""; 
 
     }
-//    else if (temp == '\n')
-//    {        
-//        cout << endl;
-//        to_convert= ""; 
-//    }
     else
         to_convert += temp;
 }
